@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>TaskFlow MVP — Локальный трекер задач</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header><h1>TaskFlow</h1><p>Простой локальный трекер задач</p></header>
+    
+    <section id="dashboard">
+        <h2>Дашборд</h2>
+        <p>В работе: <span id="pending">0</span> | Выполнено: <span id="completed">0</span></p>
+    </section>
+
+    <section id="add-form">
+        <h2>Новая задача</h2>
+        <form id="task-form">
+            <input type="text" id="title" placeholder="Название задачи" required>
+            <textarea id="description" placeholder="Описание"></textarea>
+            <input type="date" id="dueDate" required>
+            <select id="priority">
+                <option value="low">Низкий</option>
+                <option value="medium" selected>Средний</option>
+                <option value="high">Высокий</option>
+            </select>
+            <button type="submit" id="submit-btn">Добавить задачу</button>
+        </form>
+    </section>
+
+    <section id="tasks">
+        <h2>Список задач</h2>
+        <select id="filter">
+            <option value="all">Все</option>
+            <option value="pending" selected>В работе</option>
+            <option value="completed">Выполненные</option>
+        </select>
+        <div id="task-list"></div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

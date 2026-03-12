@@ -1,0 +1,328 @@
+/* ===== Переменные ===== */
+:root {
+    --primary: #6366f1;
+    --primary-light: #8183f2;
+    --primary-dark: #4f52e0;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-800: #1f2937;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    --radius: 12px;
+}
+
+/* ===== Базовые стили ===== */
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Подключаем шрифт Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap');
+
+/* ===== Шапка ===== */
+header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    color: var(--gray-800);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 2rem;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary), #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+header p {
+    margin: 0.5rem 0 0;
+    color: var(--gray-600);
+    font-size: 1.1rem;
+}
+
+/* ===== Дашборд ===== */
+#dashboard {
+    background: white;
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 2rem;
+    border: 1px solid var(--gray-200);
+}
+
+#dashboard h2 {
+    margin-top: 0;
+    color: var(--gray-800);
+    font-size: 1.5rem;
+}
+
+#dashboard p {
+    font-size: 1.2rem;
+    color: var(--gray-600);
+    background: var(--gray-50);
+    padding: 1rem;
+    border-radius: var(--radius);
+    margin: 0;
+}
+
+#pending, #completed {
+    font-weight: 700;
+    color: var(--primary);
+}
+
+/* ===== Форма добавления ===== */
+#add-form {
+    background: white;
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 2rem;
+    border: 1px solid var(--gray-200);
+}
+
+#add-form h2 {
+    margin-top: 0;
+    color: var(--gray-800);
+    font-size: 1.5rem;
+}
+
+#task-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#task-form input,
+#task-form textarea,
+#task-form select {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--gray-200);
+    border-radius: calc(var(--radius) / 2);
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-family: inherit;
+}
+
+#task-form input:focus,
+#task-form textarea:focus,
+#task-form select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+#task-form textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+#submit-btn {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: calc(var(--radius) / 2);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+#submit-btn:active {
+    transform: translateY(0);
+}
+
+/* ===== Список задач ===== */
+#tasks {
+    background: white;
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 800px;
+    border: 1px solid var(--gray-200);
+}
+
+#tasks h2 {
+    margin-top: 0;
+    color: var(--gray-800);
+    font-size: 1.5rem;
+}
+
+#filter {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--gray-200);
+    border-radius: calc(var(--radius) / 2);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    background: white;
+    cursor: pointer;
+}
+
+#task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Карточка задачи */
+.task-card {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.task-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+    border-color: var(--primary-light);
+}
+
+.task-card.high {
+    border-left: 5px solid var(--danger);
+    background: linear-gradient(to right, rgba(239, 68, 68, 0.05), transparent);
+}
+
+.task-card.medium {
+    border-left: 5px solid var(--warning);
+    background: linear-gradient(to right, rgba(245, 158, 11, 0.05), transparent);
+}
+
+.task-card.low {
+    border-left: 5px solid var(--success);
+    background: linear-gradient(to right, rgba(16, 185, 129, 0.05), transparent);
+}
+
+.task-card > div:first-child {
+    flex: 1;
+    min-width: 200px;
+}
+
+.task-card h3 {
+    margin: 0 0 0.5rem;
+    color: var(--gray-800);
+    font-size: 1.25rem;
+}
+
+.task-card p {
+    margin: 0.25rem 0;
+    color: var(--gray-600);
+    line-height: 1.5;
+}
+
+.task-card p:last-of-type {
+    font-size: 0.9rem;
+    color: var(--gray-700);
+}
+
+/* Кнопки в карточке */
+.task-card > div:last-child {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.task-card button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: calc(var(--radius) / 2);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: white;
+    border: 1px solid var(--gray-200);
+    color: var(--gray-700);
+}
+
+.task-card button:hover {
+    background: var(--gray-100);
+    border-color: var(--gray-600);
+    transform: translateY(-1px);
+}
+
+.task-card button:first-of-type {
+    background: var(--success);
+    border-color: var(--success);
+    color: white;
+}
+
+.task-card button:first-of-type:hover {
+    background: #0d9668;
+    border-color: #0d9668;
+}
+
+/* ===== Адаптивность ===== */
+@media (max-width: 640px) {
+    body {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .task-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .task-card > div:last-child {
+        align-self: flex-end;
+    }
+}
